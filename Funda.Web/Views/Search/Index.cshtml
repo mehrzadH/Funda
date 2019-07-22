@@ -1,0 +1,53 @@
+﻿@model  Dictionary<string,int>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h3> @ViewBag.Error</h3>
+    </div>
+    <table border="1">
+        <thead>
+            <tr style="background-color:bisque">
+                <th>Name</th>
+                <th>Number of properties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null || Model.Count>0)
+            {
+                foreach (var kv in Model)
+                {
+            <tr>
+                <td>@kv.Key</td>
+                <td>@kv.Value</td>
+            </tr>
+
+
+                }
+            }
+             
+               
+                  
+                 
+                 
+            
+        </tbody>
+    </table>
+    @using (Html.BeginForm(FormMethod.Get))
+    {
+        <input type="checkbox" value="tuin" name="tuin" />
+        <button type="submit" >Search</button>
+
+    }
+</body>
+</html>
