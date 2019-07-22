@@ -23,6 +23,7 @@
             <table class="table table-striped table-bordered" border="1">
                 <thead>
                     <tr style="background-color:bisque">
+                        <th>No.</th>
                         <th>Name</th>
                         <th>Number of properties</th>
                     </tr>
@@ -30,13 +31,15 @@
                 <tbody>
                     @if (Model != null || Model.Count > 0)
                     {
+                        int i = 1;
                         foreach (var kv in Model)
                         {
                             <tr>
+                                <td>@i</td>
                                 <td>@kv.Key</td>
                                 <td>@kv.Value</td>
                             </tr>
-
+                            i++;
 
                         }
                     }
