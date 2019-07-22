@@ -45,7 +45,6 @@ namespace Funda.Web.Models
             HttpContext.Current.Session["parameters"] = request.Parameters;
             return request.Status;
         }
-
         public string ProcessData( params string[] parameters)
         {
             var data = (List<string>)HttpContext.Current.Session["datalist"];
@@ -64,8 +63,7 @@ namespace Funda.Web.Models
                 var status = StoreData(parameters);
                 if (status.errorCode != HttpStatusCode.OK) return $"{status.errorCode} : {status.message}";
                 data = _data;
-            }
-            
+            }            
             foreach (var str in data)
             {
                 JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
@@ -77,7 +75,6 @@ namespace Funda.Web.Models
                         makelaars[makelaarName]++;
                     else
                         makelaars.Add(makelaarName, 1);
-
                 }
             }
             return "";

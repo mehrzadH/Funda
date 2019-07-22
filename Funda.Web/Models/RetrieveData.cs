@@ -33,7 +33,6 @@ namespace Funda.Web.Models
         public void SetParams(params string[] parameters) { _parameters = parameters; }
         public string BaseUrl { get { return _baseUrl; } }
         public String[] Parameters { get{ return _parameters; } }
-
         public override string ToString()
         {
             StringBuilder addr = new StringBuilder();
@@ -44,7 +43,6 @@ namespace Funda.Web.Models
             addr.Append($"/&page={_page}&pagesize={_pageSize}");
             return addr.ToString();
         }
-
         public  string GetData()
         {
             if(!ISValidParameters())
@@ -59,7 +57,6 @@ namespace Funda.Web.Models
             try
             {
                 responseTask.Wait();
-
             }
             catch(Exception ex)
             {
@@ -71,8 +68,7 @@ namespace Funda.Web.Models
                 var readTask = result.Content.ReadAsStringAsync();
                 readTask.Wait();                
                 resultStr = readTask.Result;
-                Status.set(result.StatusCode, "OK!");
-                
+                Status.set(result.StatusCode, "OK!");                
             }
             else
             {                
