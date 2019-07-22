@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Script.Serialization;
-
 namespace Funda.Web.Models
 {
     public class RequestService : IDisposable
@@ -18,8 +17,7 @@ namespace Funda.Web.Models
         public RequestService(string url,string dataType,string key,int pageSize)
         {
             request = new RetrieveData(url, dataType, key,pageSize);            
-        }
-        
+        }        
         public RequestStatus  StoreData(params string[] parameters)
         {
             int TotalPages = 0;
