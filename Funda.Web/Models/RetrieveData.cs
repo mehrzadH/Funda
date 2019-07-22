@@ -7,7 +7,7 @@ using System.Threading;
 namespace Funda.Web.Models
 {
 
-    public class RequestModel : IDisposable
+    public class RetrieveData : IDisposable
     {
         private string _key;// = "ac1b0b1572524640a0ecc54de453ea9f";
         private string _baseUrl;
@@ -17,7 +17,7 @@ namespace Funda.Web.Models
         public RequestStatus Status { get;set;}
         private string[] _parameters;       
         private HttpClient client;
-        public RequestModel(string baseUrl, string dataType, string key,int pageSize)
+        public RetrieveData(string baseUrl, string dataType, string key,int pageSize)
         {
             _dataType = dataType;
             _baseUrl = baseUrl;
@@ -42,7 +42,6 @@ namespace Funda.Web.Models
             addr.Append(_key).Append("/").Append("?type=koop").Append("&zo=");            
             foreach (string s in _parameters) if(s.Length>0) addr.Append("/").Append(s);            
             addr.Append($"/&page={_page}&pagesize={_pageSize}");
-
             return addr.ToString();
         }
 

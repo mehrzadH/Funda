@@ -14,10 +14,10 @@ namespace Funda.Web.Models
         private List<string> _data = new List<string>();
         public List<string> Data { get { return _data; } }
 
-        private RequestModel request;       
+        private RetrieveData request;       
         public RequestService(string url,string dataType,string key,int pageSize)
         {
-            request = new RequestModel(url, dataType, key,pageSize);            
+            request = new RetrieveData(url, dataType, key,pageSize);            
         }
         
         public RequestStatus  StoreData(params string[] parameters)
@@ -40,7 +40,7 @@ namespace Funda.Web.Models
                 }
                 request.SetPage(currentPage++);
 
-            } while (currentPage <= 3);// TotalPages);
+            } while (currentPage <=  TotalPages);
             HttpContext.Current.Session["datalist"] = _data;
             HttpContext.Current.Session["parameters"] = request.Parameters;
             return request.Status;

@@ -20,12 +20,17 @@ namespace Funda.Web.Controllers
         
         public ActionResult Index(bool tuin=false)
         {
+
+           
             Dictionary<string, int> makelaars = new Dictionary<string, int>();
+           
             using (RequestService requestSvc = new RequestService(@"http://partnerapi.funda.nl/feeds/Aanbod.svc/", "json", "ac1b0b1572524640a0ecc54de453ea9f", 25))
             {
-                ViewBag.Error = requestSvc.ProcessData("amsterdam",tuin?"thin":"");
+                ViewBag.Error = requestSvc.ProcessData("amsterdam",tuin? "tuin":"");                
                 makelaars = requestSvc.Makelaars;
+                ViewBag.properties = makelaars.Sum(x => x.Value);
             }
+            
             return View(makelaars.OrderByDescending(x => x.Value).Take(10).ToDictionary(x=>x.Key,x=>x.Value));
         }
 
